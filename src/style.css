@@ -50,6 +50,7 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   --light-grey: #f5f5f5;
   --grey: #d1d1d1;
+  --dark-grey: #707073;
 }
 
 .nav-top {
@@ -93,6 +94,10 @@ body {
   cursor: pointer;
 }
 
+.separator {
+  user-select: none;
+}
+
 .logo {
   grid-column: 1;
   width: 60px;
@@ -112,6 +117,7 @@ body {
 
 .categories > li:hover {
   cursor: pointer;
+  text-decoration: underline;
 }
 
 .nav-bottom > span:nth-child(1) {
@@ -128,7 +134,7 @@ body {
   justify-self: end;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
 }
 
 .search-bar {
@@ -150,15 +156,66 @@ body {
   border-radius: 25px;
 }
 
+#search:hover,
+#search:focus {
+  background-color: var(--grey);
+}
+
 .icons {
   display: flex;
-  gap: 10px;
+  gap: 15px;
 }
 
 .icons > img {
-  width: 22px;
+  width: 34px;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.icons > img:hover {
+  background-color: var(--grey);
 }
 
 .icon:hover {
   cursor: pointer;
+}
+
+main {
+  padding: 30px 100px;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  gap: 20px;
+}
+
+.template {
+  width: 100%;
+  background-color: var(--light-grey);
+  border-radius: 25px;
+}
+
+.product-information {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-container > h1 {
+  font-size: 22px;
+  font-weight: normal;
+}
+
+.title-container > h2 {
+  font-size: 18px;
+  font-weight: normal;
+  color: var(--dark-grey);
+}
+
+.price {
+  font-size: 20px;
 }
