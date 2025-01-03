@@ -1,0 +1,164 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* USER STYLES */
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  --light-grey: #f5f5f5;
+  --grey: #d1d1d1;
+}
+
+.nav-top {
+  display: flex;
+  align-items: center;
+  background-color: var(--light-grey);
+  justify-content: flex-end;
+  padding: 10px 45px;
+}
+
+.nav-middle {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  position: relative;
+  padding: 12px 50px;
+}
+
+.nav-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--light-grey);
+  border-bottom: 1px solid var(--grey);
+  padding: 10px 45px;
+  gap: 20px;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+.user-menu {
+  font-size: 12px;
+  gap: 10px;
+}
+
+.user-menu > li:hover {
+  cursor: pointer;
+}
+
+.logo {
+  grid-column: 1;
+  width: 60px;
+}
+
+.categories {
+  padding: 0px;
+  grid-column: 2;
+  justify-self: center;
+  left: 35%;
+  font-weight: 600;
+  font-size: 16px;
+  justify-self: center;
+  gap: 25px;
+  margin: 0px auto;
+}
+
+.categories > li:hover {
+  cursor: pointer;
+}
+
+.nav-bottom > span:nth-child(1) {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.nav-bottom > span:nth-child(2) {
+  font-size: 12px;
+}
+
+.search-container {
+  grid-column: 3;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-bar {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  top: 6px;
+}
+
+#search {
+  display: flex;
+  justify-content: flex-end;
+  background-color: var(--light-grey);
+  border: none;
+  padding: 5px 5px 5px 15px;
+  border-radius: 25px;
+}
+
+.icons {
+  display: flex;
+  gap: 10px;
+}
+
+.icons > img {
+  width: 22px;
+}
+
+.icon:hover {
+  cursor: pointer;
+}
