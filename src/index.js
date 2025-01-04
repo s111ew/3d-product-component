@@ -17,6 +17,8 @@ const surfaceNames = [
 
 let surfaces = [];
 
+let rotation = true;
+
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xf5f5f5);
 
@@ -45,14 +47,14 @@ controls.dampingFactor = 0.05;
 
 // Lights
 const directionalLight = new THREE.DirectionalLight(0xffffff, 10);
-directionalLight.position.set(5, 10, 5);
+directionalLight.position.set(1, 10, 1);
 scene.add(directionalLight);
 
 const directionalLightTwo = new THREE.DirectionalLight(0xffffff, 10);
-directionalLightTwo.position.set(-5, -10, -5);
+directionalLightTwo.position.set(-1, -10, -1);
 scene.add(directionalLightTwo);
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 2);
+const ambientLight = new THREE.AmbientLight(0xffffff, 1);
 scene.add(ambientLight);
 
 // Load Model
@@ -69,6 +71,7 @@ loader.load(
         surfaces.push(obj);
       }
     });
+    surfaces[1].material = surfaces[1].material.clone();
     console.log(surfaces); // <--------------------------SURFACES CONSOLE LOG
   },
   undefined,
@@ -76,6 +79,14 @@ loader.load(
     console.error("Error loading model:", error);
   }
 );
+
+setTimeout(() => {
+  changeMaterialColour(0, 0xff0000); // Change the color of a surface
+  changeMaterialColour(4, 0xff0000); // Change the color of a surface
+  changeMaterialColour(2, 0x0000f0);
+  changeMaterialColour(1, 0x0000f0);
+  changeMaterialColour(3, 0x0000f0);
+}, 1500);
 
 // Handle Window Resize
 window.addEventListener("resize", () => {
@@ -87,8 +98,25 @@ window.addEventListener("resize", () => {
 // Animate
 function animate() {
   if (model) {
-    model.rotation.y += 0.005; // Optional: add rotation to the model for effect
+    if (rotation) {
+      model.rotation.y += 0.005;
+    }
   }
   controls.update(); // Required for damping to work
   renderer.render(scene, camera);
+}
+
+function changeMaterialColour(surfaceIndex, colour) {
+  if (!surfaces[surfaceIndex]) {
+    console.log("Surfaces have not loaded yet");
+    return;
+  }
+
+  if (surfaces[surfaceIndex].type === "Group") {
+    surfaces[surfaceIndex].children.forEach((child) => {
+      child.material.color.set(colour);
+    });
+    return;
+  }
+  surfaces[surfaceIndex].material.color.set(colour);
 }
