@@ -189,7 +189,6 @@ main {
 }
 
 main > canvas {
-  width: 100%;
   background-color: var(--light-grey);
   border-radius: 25px;
 }
