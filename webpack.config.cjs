@@ -6,6 +6,7 @@ module.exports = {
   entry: "./src/index.js",
   output: {
     filename: "main.js",
+    // eslint-disable-next-line no-undef
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
@@ -30,6 +31,10 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+      },
+      {
+        test: /\.(glb|gltf)$/,
         type: "asset/resource",
       },
     ],

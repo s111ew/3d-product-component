@@ -184,11 +184,11 @@ main {
   padding: 30px 100px;
   width: 100vw;
   display: grid;
-  grid-template-columns: 60% 40%;
-  gap: 20px;
+  grid-template-columns: 65% 35%;
+  gap: 30px;
 }
 
-.template {
+main > canvas {
   width: 100%;
   background-color: var(--light-grey);
   border-radius: 25px;
