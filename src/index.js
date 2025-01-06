@@ -2,7 +2,7 @@ import "./style.css";
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import modelPath from "/Nike720.glb";
+import modelPath from "/Nike720-1.glb";
 
 let canvasWidth = 800;
 let canvasHeight = 600;
@@ -72,7 +72,7 @@ loader.load(
       }
     });
     surfaces[1].material = surfaces[1].material.clone();
-    console.log(surfaces); // <--------------------------SURFACES CONSOLE LOG
+    modelHasLoaded();
   },
   undefined,
   (error) => {
@@ -80,13 +80,25 @@ loader.load(
   }
 );
 
-setTimeout(() => {
-  changeMaterialColour(0, 0xff0000); // Change the color of a surface
-  changeMaterialColour(4, 0xff0000); // Change the color of a surface
-  changeMaterialColour(2, 0x0000f0);
-  changeMaterialColour(1, 0x0000f0);
-  changeMaterialColour(3, 0x0000f0);
-}, 1500);
+function populateOriginalColoursObj(surfaces) {
+  for (let i = 0; i < surfaces.length; i++) {
+    let originalColour;
+
+    if (surfaces[i].type === "Group") {
+      if (i === 0) {
+        originalColour = surfaces[i].children[0].material.color.getHex();
+      } else {
+        originalColour = surfaces[i].children[1].material.color.getHex();
+      }
+    }
+
+    if (surfaces[i].type === "Mesh") {
+      originalColour = surfaces[i].material.color.getHex();
+    }
+
+    surfaces[i].originalColour = originalColour;
+  }
+}
 
 // Handle Window Resize
 window.addEventListener("resize", () => {
@@ -119,4 +131,20 @@ function changeMaterialColour(surfaceIndex, colour) {
     return;
   }
   surfaces[surfaceIndex].material.color.set(colour);
+}
+
+function resetColours() {
+  for (let i = 0; i < surfaces.length; i++) {
+    changeMaterialColour(i, surfaces[i].originalColour);
+  }
+}
+
+function addResetButtonListener() {
+  const button = document.querySelector(".reset-button");
+  button.addEventListener("click", resetColours);
+}
+
+function modelHasLoaded() {
+  populateOriginalColoursObj(surfaces);
+  addResetButtonListener();
 }
