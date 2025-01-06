@@ -65,14 +65,23 @@ loader.load(
   (gltf) => {
     model = gltf.scene;
     model.position.y = -5;
-    scene.add(model);
     model.traverse(function (obj) {
       if (surfaceNames.includes(obj.name)) {
         surfaces.push(obj);
       }
     });
-    surfaces[1].material = surfaces[1].material.clone();
+    surfaces.forEach((surface) => {
+      if (surface.type === "Group") {
+        surface.children.forEach((child) => {
+          child.material = child.material.clone();
+        });
+      } else {
+        surface.material = surface.material.clone();
+      }
+    });
     modelHasLoaded();
+    resetColours(surfaces);
+    scene.add(model);
   },
   undefined,
   (error) => {
@@ -85,11 +94,7 @@ function populateOriginalColoursObj(surfaces) {
     let originalColour;
 
     if (surfaces[i].type === "Group") {
-      if (i === 0) {
-        originalColour = surfaces[i].children[0].material.color.getHex();
-      } else {
-        originalColour = surfaces[i].children[1].material.color.getHex();
-      }
+      originalColour = surfaces[i].children[1].material.color.getHex();
     }
 
     if (surfaces[i].type === "Mesh") {
