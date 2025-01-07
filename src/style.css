@@ -190,7 +190,7 @@ main {
 
 main > canvas {
   background-color: var(--light-grey);
-  border-radius: 25px;
+  border-radius: 15px;
 }
 
 .product-information {
@@ -227,5 +227,8 @@ main > canvas {
 
 .surface-container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--light-grey);
+  padding: 10px 15px;
+  border-radius: 5px;
 }
