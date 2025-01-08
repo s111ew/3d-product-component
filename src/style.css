@@ -228,7 +228,78 @@ main > canvas {
 .surface-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: var(--light-grey);
-  padding: 10px 15px;
+  padding: 0px 15px;
   border-radius: 5px;
+  border: 1px solid var(--light-grey);
+  cursor: pointer;
+}
+
+.surface-container > label {
+  padding: 15px 0px;
+  width: 90%;
+  cursor: pointer;
+}
+
+.surface-container:hover {
+  box-sizing: content-box;
+  border: 1px solid var(--grey);
+}
+
+.color-picker {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+}
+.color-picker::-webkit-color-swatch {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: none;
+  -webkit-box-shadow: inset 0px 0px 4px 0px rgba(0, 0, 0, 0.35);
+}
+.color-picker::-moz-color-swatch {
+  border-radius: 50%;
+  border: none;
+  -moz-box-shadow: inset 0px 0px 4px 0px rgba(0, 0, 0, 0.35);
+  box-shadow: inset 0px 0px 4px 0px rgba(0, 0, 0, 0.35);
+}
+
+.reset-button,
+.add-to-cart,
+.size {
+  cursor: pointer;
+  border: none;
+  background-color: var(--light-grey);
+  border-radius: 5px;
+  padding: 10px 15px;
+  height: 50px;
+}
+
+.add-to-cart,
+.size {
+  margin-top: 15px;
+}
+
+.select-size {
+  position: relative;
+}
+
+.size {
+  width: 100%;
+  padding: 0px 15px !important;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.drop-down {
+  position: absolute;
+  right: 10px;
+  top: 40%;
 }

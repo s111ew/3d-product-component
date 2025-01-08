@@ -71,25 +71,71 @@
         <section class="customise">
           <div class="upper-primary-container surface-container">
             <label for="upper-primary">Upper (Primary)</label>
-            <input type="color" id="upper-primary" name="upper-primary"
+            <input
+              class="color-picker"
+              type="color"
+              id="upper-primary"
+              name="primaryUpper"
+              value="#000000"
           /></div>
           <div class="upper-secondary-container surface-container">
             <label for="upper-secondary">Upper (Secondary)</label>
-            <input type="color" id="upper-secondary" name="upper-secondary"
+            <input
+              class="color-picker"
+              type="color"
+              id="upper-secondary"
+              name="secondaryUpper"
+              value="#ffffff"
           /></div>
           <div class="lining-container surface-container">
             <label for="lining">Lining</label>
-            <input type="color" id="lining" name="lining" />
+            <input
+              class="color-picker"
+              type="color"
+              id="lining"
+              name="lining"
+              value="#707070"
+            />
           </div>
           <div class="midsole-container surface-container">
             <label for="midsole">Midsole</label>
-            <input type="color" id="midsole" name="midsole"
+            <input
+              class="color-picker"
+              type="color"
+              id="midsole"
+              name="midsole"
+              value="#ffffff"
           /></div>
           <div class="outsole-container surface-container">
             <label for="outsole">Outsole</label>
-            <input type="color" id="outsole" name="outsole"
+            <input
+              class="color-picker"
+              type="color"
+              id="outsole"
+              name="outsole"
+              value="#d1d1d1"
           /></div>
           <button class="reset-button">Reset</button>
+          <div class="select-size">
+            <img
+              src="./src/assets/svg/arrowDropDown.svg"
+              alt=""
+              class="drop-down"
+            />
+            <select class="size" name="size" id="size">
+              <option value="">Choose Size</option>
+              <option value="5">UK 5</option>
+              <option value="6">UK 6</option>
+              <option value="7">UK 7</option>
+              <option value="8">UK 8</option>
+              <option value="9">UK 9</option>
+              <option value="10">UK 10</option>
+              <option value="11">UK 11</option>
+              <option value="12">UK 12</option>
+              <option value="13">UK 13</option>
+            </select></div
+          >
+          <button class="add-to-cart">Add to Cart</button>
         </section>
       </section>
     </main>

@@ -119,8 +119,34 @@ function animate() {
       model.rotation.y += 0.005;
     }
   }
-  controls.update(); // Required for damping to work
+  controls.update();
   renderer.render(scene, camera);
+}
+
+function addInputEventListener() {
+  const inputs = document.querySelectorAll(".color-picker");
+  for (let i = 0; i < inputs.length; i++) {
+    inputs[i].addEventListener("change", () => {
+      const hex = inputs[i].value.slice(1);
+      const rgbString = convertHexToRGB(hex);
+      const newColour = new THREE.Color(rgbString);
+      let indexOfInput;
+      for (let j = 0; j < surfaces.length; j++) {
+        if (surfaces[j].name === inputs[i].name) {
+          indexOfInput = j;
+        }
+      }
+      changeMaterialColour(indexOfInput, newColour);
+    });
+  }
+}
+
+function convertHexToRGB(hex) {
+  const r = parseInt(hex.slice(0, 2), 16);
+  const g = parseInt(hex.slice(2, 4), 16);
+  const b = parseInt(hex.slice(4, 6), 16);
+
+  return `rgb(${r}, ${g}, ${b})`;
 }
 
 function changeMaterialColour(surfaceIndex, colour) {
@@ -142,6 +168,7 @@ function resetColours() {
   for (let i = 0; i < surfaces.length; i++) {
     changeMaterialColour(i, surfaces[i].originalColour);
   }
+  resetInputValues();
 }
 
 function addResetButtonListener() {
@@ -149,7 +176,23 @@ function addResetButtonListener() {
   button.addEventListener("click", resetColours);
 }
 
+function resetInputValues() {
+  const inputs = document.querySelectorAll(".color-picker");
+  const originalValues = [
+    "#000000",
+    "#ffffff",
+    "#707073",
+    "#ffffff",
+    "#d1d1d1",
+  ];
+  for (let i = 0; i < inputs.length; i++) {
+    inputs[i].value = originalValues[i];
+  }
+}
+
 function modelHasLoaded() {
   populateOriginalColoursObj(surfaces);
   addResetButtonListener();
+  addInputEventListener();
+  console.log(surfaces);
 }
