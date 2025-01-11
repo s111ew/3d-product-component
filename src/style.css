@@ -191,6 +191,11 @@ main {
 main > canvas {
   background-color: var(--light-grey);
   border-radius: 15px;
+  cursor: grab;
+}
+
+main > canvas:active {
+  cursor: grabbed;
 }
 
 .product-information {
@@ -219,10 +224,20 @@ main > canvas {
   font-size: 20px;
 }
 
+.customise-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .customise {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 5px;
+}
+
+.color-wheel {
+  width: 30px;
 }
 
 .surface-container {
@@ -280,6 +295,15 @@ main > canvas {
   border-radius: 5px;
   padding: 10px 15px;
   height: 50px;
+}
+
+.add-to-cart {
+  background-color: var(--dark-grey);
+  color: white;
+}
+
+.reset-button {
+  height: 100%;
 }
 
 .add-to-cart,

@@ -190,9 +190,27 @@ function resetInputValues() {
   }
 }
 
+function addCanvasGrabCursorEvents() {
+  const canvas = document.querySelector("canvas");
+
+  if (!canvas) {
+    console.error("Canvas element not found!");
+    return;
+  }
+
+  canvas.addEventListener("mousedown", () => {
+    canvas.style.cursor = "grabbed";
+  });
+
+  canvas.addEventListener("mouseup", () => {
+    canvas.style.cursor = "grab";
+  });
+}
+
 function modelHasLoaded() {
   populateOriginalColoursObj(surfaces);
   addResetButtonListener();
   addInputEventListener();
+  addCanvasGrabCursorEvents();
   console.log(surfaces);
 }
